@@ -1,12 +1,11 @@
-# data parser
+# Data parser
 
-simple data parser for php
+Universal data parser for PHP
 
-driver
+Driver:
 
 - json(by `json_encode`)
 - php(by `serialize`)
-- swoole(by extension `swoole_serialize`)
 - msgpack(by extension `msgpack`)
 
 ## Install
