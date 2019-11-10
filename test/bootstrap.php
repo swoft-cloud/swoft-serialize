@@ -15,7 +15,7 @@ spl_autoload_register(function ($class) {
         $file = dirname(__DIR__) . "/example/{$path}.php";
     } elseif (0 === strpos($class,'Swoft\DataParser\Test\\')) {
         $path = str_replace('\\', '/', substr($class, strlen('Swoft\DataParser\Test\\')));
-        $file = __DIR__ . "/{$path}.php";
+        $file = __DIR__ . "/unit/{$path}.php";
     } elseif (0 === strpos($class,'Swoft\DataParser\\')) {
         $path = str_replace('\\', '/', substr($class, strlen('Swoft\DataParser\\')));
         $file = dirname(__DIR__) . "/src/{$path}.php";

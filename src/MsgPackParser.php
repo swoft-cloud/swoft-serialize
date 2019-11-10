@@ -1,22 +1,26 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Swoft\DataParser;
 
+use RuntimeException;
+use Swoft\DataParser\Contract\DataParserInterface;
+use function function_exists;
+
 /**
  * Class MsgPackParser
- * @package Swoft\DataParser
- * @author inhere <in.798@qq.com>
+ *
+ * @since 1.0
  */
-class MsgPackParser implements ParserInterface
+class MsgPackParser implements DataParserInterface
 {
     /**
      * class constructor.
-     * @throws \RuntimeException
+     * @throws RuntimeException
      */
     public function __construct()
     {
-        if (!\function_exists('msgpack_pack')) {
-            throw new \RuntimeException("The php extension 'msgpack' is required!");
+        if (!function_exists('msgpack_pack')) {
+            throw new RuntimeException("The php extension 'msgpack' is required!");
         }
     }
 
@@ -26,6 +30,7 @@ class MsgPackParser implements ParserInterface
      */
     public function encode($data): string
     {
+        /** @noinspection PhpUndefinedFunctionInspection */
         return \msgpack_pack($data);
     }
 
@@ -35,6 +40,7 @@ class MsgPackParser implements ParserInterface
      */
     public function decode(string $data)
     {
+        /** @noinspection PhpUndefinedFunctionInspection */
         return \msgpack_unpack($data);
     }
 }

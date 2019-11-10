@@ -20,8 +20,7 @@ composer require swoft/data-parser
 ## Usage
 
 ```php
-$parser = new SwooleParser();
-// $parser = new JsonParser();
+$parser = new JsonParser();
 // $parser = new PhpParser();
 // $parser = new MsgPackParser();
 

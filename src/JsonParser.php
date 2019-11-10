@@ -1,28 +1,35 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: inhere
- * Date: 2017-12-14
- * Time: 19:07
- */
+<?php declare(strict_types=1);
 
 namespace Swoft\DataParser;
 
+use Swoft\DataParser\Contract\DataParserInterface;
+use Swoft\Stdlib\Helper\JsonHelper;
+
 /**
  * Class JsonParser
- * @package Swoft\DataParser
- * @author inhere <in.798@qq.com>
+ *
+ * @since 1.0
  */
-class JsonParser implements ParserInterface
+class JsonParser implements DataParserInterface
 {
     /**
      * @var bool
      */
-    protected $assoc = true;
+    private $assoc = true;
 
     /**
-     * JsonParser constructor.
-     * @param null $assoc
+     * @var int
+     */
+    private $encodeOption = 0;
+
+    /**
+     * @var int
+     */
+    private $decodeOption = 0;
+
+    /**
+     * Class constructor.
+     * @param null|bool $assoc
      */
     public function __construct($assoc = null)
     {
@@ -37,7 +44,7 @@ class JsonParser implements ParserInterface
      */
     public function decode(string $data)
     {
-        return \json_decode($data, $this->assoc);
+        return JsonHelper::decode($data, $this->assoc, 512, $this->decodeOption);
     }
 
     /**
@@ -46,7 +53,7 @@ class JsonParser implements ParserInterface
      */
     public function encode($data): string
     {
-        return \json_encode($data);
+        return JsonHelper::encode($data, $this->encodeOption);
     }
 
     /**
@@ -60,8 +67,40 @@ class JsonParser implements ParserInterface
     /**
      * @param bool $assoc
      */
-    public function setAssoc($assoc)
+    public function setAssoc($assoc): void
     {
         $this->assoc = (bool)$assoc;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEncodeOption(): int
+    {
+        return $this->encodeOption;
+    }
+
+    /**
+     * @param int $encodeOption
+     */
+    public function setEncodeOption(int $encodeOption): void
+    {
+        $this->encodeOption = $encodeOption;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDecodeOption(): int
+    {
+        return $this->decodeOption;
+    }
+
+    /**
+     * @param int $decodeOption
+     */
+    public function setDecodeOption(int $decodeOption): void
+    {
+        $this->decodeOption = $decodeOption;
     }
 }

@@ -1,19 +1,17 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: inhere
- * Date: 2017-12-14
- * Time: 19:07
- */
+<?php declare(strict_types=1);
 
 namespace Swoft\DataParser;
 
+use Swoft\DataParser\Contract\DataParserInterface;
+use function serialize;
+use function unserialize;
+
 /**
  * Class PhpParser
- * @package Swoft\DataParser
- * @author inhere <in.798@qq.com>
+ *
+ * @since 1.0
  */
-class PhpParser implements ParserInterface
+class PhpParser implements DataParserInterface
 {
     /**
      * @param mixed $data
@@ -21,7 +19,7 @@ class PhpParser implements ParserInterface
      */
     public function encode($data): string
     {
-        return \serialize($data);
+        return serialize($data);
     }
 
     /**
@@ -30,6 +28,6 @@ class PhpParser implements ParserInterface
      */
     public function decode(string $data)
     {
-        return \unserialize($data, ['allowed_classes' => false]);
+        return unserialize($data, ['allowed_classes' => false]);
     }
 }
