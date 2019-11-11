@@ -1,11 +1,12 @@
 # Data parser
 
-Universal data parser for PHP
+Universal data parser/ for PHP
 
 Driver:
 
 - json(by `json_encode`)
 - php(by `serialize`)
+- igbinary(by extension `igbinary`)
 - msgpack(by extension `msgpack`)
 
 ## Install

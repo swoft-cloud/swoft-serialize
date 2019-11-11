@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Swoft\DataParser;
+namespace Swoft\DataParser\Concern;
 
 use Swoft\DataParser\Contract\DataParserInterface;
 

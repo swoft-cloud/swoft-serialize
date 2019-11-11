@@ -4,21 +4,21 @@ namespace Swoft\DataParser;
 
 use RuntimeException;
 use Swoft\DataParser\Contract\DataParserInterface;
-use function function_exists;
+use function extension_loaded;
 
 /**
- * Class MsgPackParser
+ * Class IgBinaryParser
  *
- * @since 1.0
+ * @since 2.0
  */
-class MsgPackParser implements DataParserInterface
+class IgBinaryParser implements DataParserInterface
 {
     /**
      * @return bool
      */
     public static function isSupported(): bool
     {
-        return function_exists('msgpack_pack');
+        return extension_loaded('igbinary');
     }
 
     /**
@@ -40,8 +40,8 @@ class MsgPackParser implements DataParserInterface
      */
     public function encode($data): string
     {
-        /** @noinspection PhpUndefinedFunctionInspection */
-        return \msgpack_pack($data);
+        /** @noinspection PhpComposerExtensionStubsInspection */
+        return \igbinary_serialize($data);
     }
 
     /**
@@ -51,7 +51,7 @@ class MsgPackParser implements DataParserInterface
      */
     public function decode(string $data)
     {
-        /** @noinspection PhpUndefinedFunctionInspection */
-        return \msgpack_unpack($data);
+        /** @noinspection PhpComposerExtensionStubsInspection */
+        return \igbinary_unserialize($data);
     }
 }

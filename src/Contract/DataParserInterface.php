@@ -10,6 +10,11 @@ namespace Swoft\DataParser\Contract;
 interface DataParserInterface
 {
     /**
+     * @return bool
+     */
+    public static function isSupported(): bool;
+
+    /**
      * @param array|object|mixed $data
      *
      * @return string

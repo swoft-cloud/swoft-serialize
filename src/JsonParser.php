@@ -4,6 +4,7 @@ namespace Swoft\DataParser;
 
 use Swoft\DataParser\Contract\DataParserInterface;
 use Swoft\Stdlib\Helper\JsonHelper;
+use function function_exists;
 
 /**
  * Class JsonParser
@@ -26,6 +27,14 @@ class JsonParser implements DataParserInterface
      * @var int
      */
     private $decodeOption = 0;
+
+    /**
+     * @return bool
+     */
+    public static function isSupported(): bool
+    {
+        return function_exists('json_encode');
+    }
 
     /**
      * Class constructor.
