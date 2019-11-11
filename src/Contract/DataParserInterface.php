@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace Swoft\DataParser\Contract;
+namespace Swoft\Serialize\Contract;
 
 /**
- * Class DataParserInterface
+ * Class SerializeInterface
  *
  * @since 2.0.7
  */
-interface DataParserInterface
+interface SerializeInterface
 {
     /**
      * @return bool

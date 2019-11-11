@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Swoft\DataParser;
+namespace Swoft\Serialize;
 
-use Swoft\DataParser\Contract\DataParserInterface;
+use Swoft\Serialize\Contract\SerializeInterface;
 use Swoft\Stdlib\Helper\JsonHelper;
 use function function_exists;
 
 /**
- * Class JsonParser
+ * Class JsonSerializer
  *
  * @since 1.0
  */
-class JsonParser implements DataParserInterface
+class JsonSerializer implements SerializeInterface
 {
     /**
      * @var bool

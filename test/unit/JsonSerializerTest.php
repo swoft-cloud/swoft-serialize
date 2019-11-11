@@ -1,22 +1,22 @@
 <?php
 
-namespace SwoftTest\DataParser;
+namespace SwoftTest\Serialize;
 
-use Swoft\DataParser\JsonParser;
+use Swoft\Serialize\JsonSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class JsonParserTest
- * @covers JsonParser
+ * Class JsonSerializerTest
+ * @covers JsonSerializer
  */
-class JsonParserTest extends TestCase
+class JsonSerializerTest extends TestCase
 {
     public function testDecode()
     {
         $str = '{"name": "value"}';
 
-        $parser = new JsonParser();
-        $ret = $parser->decode($str);
+        $serializer = new JsonSerializer();
+        $ret = $serializer->decode($str);
 
         $this->assertInternalType('array', $ret);
         $this->assertArrayHasKey('name', $ret);
@@ -28,8 +28,8 @@ class JsonParserTest extends TestCase
             'name' => 'value',
         ];
 
-        $parser = new JsonParser();
-        $ret = $parser->encode($data);
+        $serializer = new JsonSerializer();
+        $ret = $serializer->encode($data);
 
         $this->assertInternalType('string', $ret);
         $this->assertJson($ret);

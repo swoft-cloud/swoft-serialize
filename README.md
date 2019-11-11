@@ -1,8 +1,8 @@
-# Data parser
+# Data Serializer
 
-Universal data parser/ for PHP
+Universal data serializer for PHP
 
-Driver:
+Serializers:
 
 - json(by `json_encode`)
 - php(by `serialize`)
@@ -14,21 +14,22 @@ Driver:
 - composer command
 
 ```bash
-composer require swoft/data-parser
+composer require swoft/serializer
 ```
 
 ## Usage
 
 ```php
-$parser = new JsonParser();
-// $parser = new PhpParser();
-// $parser = new MsgPackParser();
+$serializer = new JsonSerializer();
+// $serializer = new PhpSerializer();
+// $serializer = new IgBinarySerializer();
+// $serializer = new MsgPackSerializer();
 
-// encode
-$encoded = $parser->encode($data);
+// serialize data
+$string = $serializer->serialize($data);
 
-// decode
-$decoded = $parser->encode($encoded);
+// unserialize string
+$data = $serializer->unserialize($string);
 ```
 
 ## Unit testing

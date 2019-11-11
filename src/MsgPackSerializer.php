@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Swoft\DataParser;
+namespace Swoft\Serialize;
 
 use RuntimeException;
-use Swoft\DataParser\Contract\DataParserInterface;
+use Swoft\Serialize\Contract\SerializeInterface;
 use function function_exists;
 
 /**
- * Class MsgPackParser
+ * Class MsgPackSerializer
  *
  * @since 1.0
  */
-class MsgPackParser implements DataParserInterface
+class MsgPackSerializer implements SerializeInterface
 {
     /**
      * @return bool

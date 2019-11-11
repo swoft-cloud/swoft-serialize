@@ -10,14 +10,14 @@ date_default_timezone_set('Asia/Shanghai');
 spl_autoload_register(function ($class) {
     $file = null;
 
-    if (0 === strpos($class,'Swoft\DataParser\Example\\')) {
-        $path = str_replace('\\', '/', substr($class, strlen('Swoft\DataParser\Example\\')));
+    if (0 === strpos($class,'Swoft\Serialize\Example\\')) {
+        $path = str_replace('\\', '/', substr($class, strlen('Swoft\Serialize\Example\\')));
         $file = dirname(__DIR__) . "/example/{$path}.php";
-    } elseif (0 === strpos($class,'Swoft\DataParser\Test\\')) {
-        $path = str_replace('\\', '/', substr($class, strlen('Swoft\DataParser\Test\\')));
+    } elseif (0 === strpos($class,'Swoft\Serialize\Test\\')) {
+        $path = str_replace('\\', '/', substr($class, strlen('Swoft\Serialize\Test\\')));
         $file = __DIR__ . "/unit/{$path}.php";
-    } elseif (0 === strpos($class,'Swoft\DataParser\\')) {
-        $path = str_replace('\\', '/', substr($class, strlen('Swoft\DataParser\\')));
+    } elseif (0 === strpos($class,'Swoft\Serialize\\')) {
+        $path = str_replace('\\', '/', substr($class, strlen('Swoft\Serialize\\')));
         $file = dirname(__DIR__) . "/src/{$path}.php";
     }
 

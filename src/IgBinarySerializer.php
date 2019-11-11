@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Swoft\DataParser;
+namespace Swoft\Serialize;
 
 use RuntimeException;
-use Swoft\DataParser\Contract\DataParserInterface;
+use Swoft\Serialize\Contract\SerializeInterface;
 use function extension_loaded;
 
 /**
- * Class IgBinaryParser
+ * Class IgBinarySerializer
  *
  * @since 2.0
  */
-class IgBinaryParser implements DataParserInterface
+class IgBinarySerializer implements SerializeInterface
 {
     /**
      * @return bool

@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace Swoft\DataParser;
+namespace Swoft\Serialize;
 
-use Swoft\DataParser\Contract\DataParserInterface;
+use Swoft\Serialize\Contract\SerializeInterface;
 use function serialize;
 use function unserialize;
 
 /**
- * Class PhpParser
+ * Class PhpSerializer
  *
  * @since 1.0
  */
-class PhpParser implements DataParserInterface
+class PhpSerializer implements SerializeInterface
 {
     /**
      * @param mixed $data

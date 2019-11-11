@@ -1,22 +1,22 @@
 <?php
 
-namespace SwoftTest\DataParser;
+namespace SwoftTest\Serialize;
 
-use Swoft\DataParser\PhpParser;
+use Swoft\Serialize\PhpSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class PhpParserTest
- * @covers PhpParser
+ * Class PhpSerializerTest
+ * @covers PhpSerializer
  */
-class PhpParserTest extends TestCase
+class PhpSerializerTest extends TestCase
 {
     public function testDecode()
     {
         $str = 'a:1:{s:4:"name";s:5:"value";}';
 
-        $parser = new PhpParser();
-        $ret = $parser->decode($str);
+        $serializer = new PhpSerializer();
+        $ret = $serializer->decode($str);
 
         $this->assertInternalType('array', $ret);
         $this->assertArrayHasKey('name', $ret);
@@ -28,8 +28,8 @@ class PhpParserTest extends TestCase
             'name' => 'value',
         ];
 
-        $parser = new PhpParser();
-        $ret = $parser->encode($data);
+        $serializer = new PhpSerializer();
+        $ret = $serializer->encode($data);
 
         $this->assertInternalType('string', $ret);
         $this->assertStringStartsWith('a:1:{', $ret);

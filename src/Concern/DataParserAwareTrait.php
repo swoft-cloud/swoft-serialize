@@ -1,38 +1,38 @@
 <?php declare(strict_types=1);
 
-namespace Swoft\DataParser\Concern;
+namespace Swoft\Serialize\Concern;
 
-use Swoft\DataParser\Contract\DataParserInterface;
+use Swoft\Serialize\Contract\SerializeInterface;
 
 /**
- * Class DataParserAwareTrait
+ * Class SerializeAwareTrait
  *
  * @since 1.0
  */
-trait DataParserAwareTrait
+trait SerializeAwareTrait
 {
     /**
-     * @var DataParserInterface
+     * @var SerializeInterface
      */
-    private $parser;
+    private $serializer;
 
     /**
-     * @return DataParserInterface
+     * @return SerializeInterface
      */
-    public function getParser(): DataParserInterface
+    public function getSerializer(): SerializeInterface
     {
-        if (!$this->parser) {
-            $this->parser = new PhpParser();
+        if (!$this->serializer) {
+            $this->serializer = new PhpSerializer();
         }
 
-        return $this->parser;
+        return $this->serializer;
     }
 
     /**
-     * @param DataParserInterface $parser
+     * @param SerializeInterface $serializer
      */
-    public function setParser(DataParserInterface $parser): void
+    public function setSerializer(SerializeInterface $serializer): void
     {
-        $this->parser = $parser;
+        $this->serializer = $serializer;
     }
 }
