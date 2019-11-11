@@ -1,4 +1,4 @@
-# Data Serializer
+# Data Serialize
 
 Universal data serializer for PHP
 
@@ -14,7 +14,7 @@ Serializers:
 - composer command
 
 ```bash
-composer require swoft/serializer
+composer require swoft/serialize
 ```
 
 ## Usage

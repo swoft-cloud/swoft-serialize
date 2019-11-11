@@ -2,24 +2,24 @@
 
 namespace Swoft\Serialize\Concern;
 
-use Swoft\Serialize\Contract\SerializeInterface;
+use Swoft\Serialize\Contract\SerializerInterface;
 
 /**
  * Class SerializeAwareTrait
  *
  * @since 1.0
  */
-trait SerializeAwareTrait
+trait SerializerAwareTrait
 {
     /**
-     * @var SerializeInterface
+     * @var SerializerInterface
      */
     private $serializer;
 
     /**
-     * @return SerializeInterface
+     * @return SerializerInterface
      */
-    public function getSerializer(): SerializeInterface
+    public function getSerializer(): SerializerInterface
     {
         if (!$this->serializer) {
             $this->serializer = new PhpSerializer();
@@ -29,9 +29,9 @@ trait SerializeAwareTrait
     }
 
     /**
-     * @param SerializeInterface $serializer
+     * @param SerializerInterface $serializer
      */
-    public function setSerializer(SerializeInterface $serializer): void
+    public function setSerializer(SerializerInterface $serializer): void
     {
         $this->serializer = $serializer;
     }

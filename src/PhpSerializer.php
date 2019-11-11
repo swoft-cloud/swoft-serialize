@@ -2,7 +2,8 @@
 
 namespace Swoft\Serialize;
 
-use Swoft\Serialize\Contract\SerializeInterface;
+use Swoft\Serialize\Contract\SerializerInterface;
+use function function_exists;
 use function serialize;
 use function unserialize;
 
@@ -11,23 +12,54 @@ use function unserialize;
  *
  * @since 1.0
  */
-class PhpSerializer implements SerializeInterface
+class PhpSerializer implements SerializerInterface
 {
     /**
+     * @var array
+     */
+    private $options = ['allowed_classes' => false];
+
+    /**
+     * @return bool
+     */
+    public static function isSupported(): bool
+    {
+        return function_exists('serialize');
+    }
+
+    /**
      * @param mixed $data
+     *
      * @return string
      */
-    public function encode($data): string
+    public function serialize($data): string
     {
         return serialize($data);
     }
 
     /**
-     * @param string $data
+     * @param string $string
+     *
      * @return mixed
      */
-    public function decode(string $data)
+    public function unserialize(string $string)
     {
-        return unserialize($data, ['allowed_classes' => false]);
+        return unserialize($string, $this->options);
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions(): array
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param array $options
+     */
+    public function setOptions(array $options): void
+    {
+        $this->options = $options;
     }
 }

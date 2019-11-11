@@ -3,22 +3,21 @@
 <phpunit backupGlobals="false"
          backupStaticAttributes="false"
          bootstrap="test/bootstrap.php"
-         colors="false"
+         colors="true"
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          stopOnFailure="false"
-         syntaxCheck="false"
 >
-    <testsuites>
-        <testsuite name="Php Library Test Suite">
-            <directory>test/unit</directory>
-        </testsuite>
-    </testsuites>
+  <testsuites>
+    <testsuite name="Php Library Test Suite">
+      <directory>test/unit</directory>
+    </testsuite>
+  </testsuites>
 
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src</directory>
-        </whitelist>
-    </filter>
+  <filter>
+    <whitelist>
+      <directory suffix=".php">src</directory>
+    </whitelist>
+  </filter>
 </phpunit>

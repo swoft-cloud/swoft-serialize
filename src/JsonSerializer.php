@@ -2,16 +2,21 @@
 
 namespace Swoft\Serialize;
 
-use Swoft\Serialize\Contract\SerializeInterface;
-use Swoft\Stdlib\Helper\JsonHelper;
+use RuntimeException;
+use Swoft\Serialize\Contract\SerializerInterface;
 use function function_exists;
+use function json_decode;
+use function json_encode;
+use function json_last_error;
+use function json_last_error_msg;
+use const JSON_ERROR_NONE;
 
 /**
  * Class JsonSerializer
  *
  * @since 1.0
  */
-class JsonSerializer implements SerializeInterface
+class JsonSerializer implements SerializerInterface
 {
     /**
      * @var bool
@@ -38,6 +43,7 @@ class JsonSerializer implements SerializeInterface
 
     /**
      * Class constructor.
+     *
      * @param null|bool $assoc
      */
     public function __construct($assoc = null)
@@ -48,21 +54,35 @@ class JsonSerializer implements SerializeInterface
     }
 
     /**
-     * @param string $data
+     * @param string $string
+     *
      * @return mixed
      */
-    public function decode(string $data)
+    public function unserialize(string $string)
     {
-        return JsonHelper::decode($data, $this->assoc, 512, $this->decodeOption);
+        $data = json_decode($string, $this->assoc, 512, $this->decodeOption);
+
+        if (JSON_ERROR_NONE !== json_last_error()) {
+            throw new RuntimeException('json_decode error: ' . json_last_error_msg());
+        }
+
+        return $data;
     }
 
     /**
      * @param mixed $data
+     *
      * @return string
      */
-    public function encode($data): string
+    public function serialize($data): string
     {
-        return JsonHelper::encode($data, $this->encodeOption);
+        $string = json_encode($data, $this->encodeOption);
+
+        if (JSON_ERROR_NONE !== json_last_error()) {
+            throw new RuntimeException('json_decode error: ' . json_last_error_msg());
+        }
+
+        return $string;
     }
 
     /**

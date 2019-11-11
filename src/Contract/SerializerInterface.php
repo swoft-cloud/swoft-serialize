@@ -3,11 +3,11 @@
 namespace Swoft\Serialize\Contract;
 
 /**
- * Class SerializeInterface
+ * Class SerializerInterface
  *
  * @since 2.0.7
  */
-interface SerializeInterface
+interface SerializerInterface
 {
     /**
      * @return bool
@@ -19,12 +19,12 @@ interface SerializeInterface
      *
      * @return string
      */
-    public function encode($data): string;
+    public function serialize($data): string;
 
     /**
      * @param string $string
      *
      * @return array|object
      */
-    public function decode(string $string);
+    public function unserialize(string $string);
 }

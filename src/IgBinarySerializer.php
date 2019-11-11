@@ -3,7 +3,7 @@
 namespace Swoft\Serialize;
 
 use RuntimeException;
-use Swoft\Serialize\Contract\SerializeInterface;
+use Swoft\Serialize\Contract\SerializerInterface;
 use function extension_loaded;
 
 /**
@@ -11,7 +11,7 @@ use function extension_loaded;
  *
  * @since 2.0
  */
-class IgBinarySerializer implements SerializeInterface
+class IgBinarySerializer implements SerializerInterface
 {
     /**
      * @return bool
@@ -38,20 +38,20 @@ class IgBinarySerializer implements SerializeInterface
      *
      * @return string
      */
-    public function encode($data): string
+    public function serialize($data): string
     {
         /** @noinspection PhpComposerExtensionStubsInspection */
         return \igbinary_serialize($data);
     }
 
     /**
-     * @param string $data
+     * @param string $string
      *
      * @return mixed
      */
-    public function decode(string $data)
+    public function unserialize(string $string)
     {
         /** @noinspection PhpComposerExtensionStubsInspection */
-        return \igbinary_unserialize($data);
+        return \igbinary_unserialize($string);
     }
 }

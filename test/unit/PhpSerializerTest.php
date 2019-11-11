@@ -1,37 +1,36 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace SwoftTest\Serialize;
 
-use Swoft\Serialize\PhpSerializer;
 use PHPUnit\Framework\TestCase;
+use Swoft\Serialize\PhpSerializer;
 
 /**
  * Class PhpSerializerTest
- * @covers PhpSerializer
  */
 class PhpSerializerTest extends TestCase
 {
-    public function testDecode()
+    public function testUnserialize(): void
     {
-        $str = 'a:1:{s:4:"name";s:5:"value";}';
-
         $serializer = new PhpSerializer();
-        $ret = $serializer->decode($str);
 
-        $this->assertInternalType('array', $ret);
+        $str = 'a:1:{s:4:"name";s:5:"value";}';
+        $ret = $serializer->unserialize($str);
+
+        $this->assertIsArray($ret);
         $this->assertArrayHasKey('name', $ret);
     }
 
-    public function testEncode()
+    public function testSerialize(): void
     {
-        $data = [
+        $serializer = new PhpSerializer();
+
+        $arr = [
             'name' => 'value',
         ];
+        $str = $serializer->serialize($arr);
 
-        $serializer = new PhpSerializer();
-        $ret = $serializer->encode($data);
-
-        $this->assertInternalType('string', $ret);
-        $this->assertStringStartsWith('a:1:{', $ret);
+        $this->assertIsString('string', $str);
+        $this->assertStringStartsWith('a:1:{', $str);
     }
 }

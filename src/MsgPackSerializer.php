@@ -3,7 +3,7 @@
 namespace Swoft\Serialize;
 
 use RuntimeException;
-use Swoft\Serialize\Contract\SerializeInterface;
+use Swoft\Serialize\Contract\SerializerInterface;
 use function function_exists;
 
 /**
@@ -11,7 +11,7 @@ use function function_exists;
  *
  * @since 1.0
  */
-class MsgPackSerializer implements SerializeInterface
+class MsgPackSerializer implements SerializerInterface
 {
     /**
      * @return bool
@@ -38,20 +38,20 @@ class MsgPackSerializer implements SerializeInterface
      *
      * @return string
      */
-    public function encode($data): string
+    public function serialize($data): string
     {
         /** @noinspection PhpUndefinedFunctionInspection */
         return \msgpack_pack($data);
     }
 
     /**
-     * @param string $data
+     * @param string $string
      *
      * @return mixed
      */
-    public function decode(string $data)
+    public function unserialize(string $string)
     {
         /** @noinspection PhpUndefinedFunctionInspection */
-        return \msgpack_unpack($data);
+        return \msgpack_unpack($string);
     }
 }

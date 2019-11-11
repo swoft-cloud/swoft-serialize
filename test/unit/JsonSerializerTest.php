@@ -1,37 +1,36 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace SwoftTest\Serialize;
 
-use Swoft\Serialize\JsonSerializer;
 use PHPUnit\Framework\TestCase;
+use Swoft\Serialize\JsonSerializer;
 
 /**
  * Class JsonSerializerTest
- * @covers JsonSerializer
  */
 class JsonSerializerTest extends TestCase
 {
-    public function testDecode()
+    public function testUnserialize(): void
     {
         $str = '{"name": "value"}';
 
         $serializer = new JsonSerializer();
-        $ret = $serializer->decode($str);
+        $ret        = $serializer->unserialize($str);
 
-        $this->assertInternalType('array', $ret);
+        $this->assertIsArray($ret);
         $this->assertArrayHasKey('name', $ret);
     }
 
-    public function testEncode()
+    public function testSerialize(): void
     {
-        $data = [
+        $serializer = new JsonSerializer();
+
+        $arr = [
             'name' => 'value',
         ];
+        $str = $serializer->serialize($arr);
 
-        $serializer = new JsonSerializer();
-        $ret = $serializer->encode($data);
-
-        $this->assertInternalType('string', $ret);
-        $this->assertJson($ret);
+        $this->assertIsString($str);
+        $this->assertJson($str);
     }
 }
