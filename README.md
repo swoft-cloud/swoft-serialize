@@ -1,5 +1,9 @@
 # Data Serialize
 
+[![Latest Stable Version](http://img.shields.io/packagist/v/swoft/serialize.svg)](https://packagist.org/packages/swoft/serialize)
+[![Php Version](https://img.shields.io/badge/php-%3E=7.1-brightgreen.svg?maxAge=2592000)](https://secure.php.net/)
+[![Library License](https://img.shields.io/hexpm/l/plug.svg?maxAge=2592000)](https://github.com/swoft-cloud/swoft-serialize/blob/master/LICENSE)
+
 Universal data serializer for PHP
 
 Serializers:
