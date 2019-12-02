@@ -24,7 +24,7 @@ jobs:
           pecl: true
 
       - name: Install extensions
-        run: pecl install -f msgpack && pecl install -f igbinary && php -m
+        run: pecl install msgpack && pecl install igbinary && php -m
 
       - name: Install dependencies
         run: composer install --no-progress --no-suggest
