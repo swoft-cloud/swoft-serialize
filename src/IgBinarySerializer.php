@@ -29,7 +29,7 @@ class IgBinarySerializer implements SerializerInterface
     public function __construct()
     {
         if (!self::isSupported()) {
-            throw new RuntimeException("The php extension 'msgpack' is required!");
+            throw new RuntimeException("The php extension 'igbinary' is required!");
         }
     }
 
