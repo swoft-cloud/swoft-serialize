@@ -28,7 +28,7 @@ jobs:
 
       - name: Install extensions
         run: |
-          pecl update-channels && pecl install -f msgpack && pecl install -f igbinary && php -m
+          sudo pecl update-channels && pecl install -f msgpack && pecl install -f igbinary && php -m
 
       - name: Install dependencies
         run: composer install --no-progress --no-suggest
