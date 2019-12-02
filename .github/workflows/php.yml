@@ -7,7 +7,7 @@ jobs:
   test:
     name: Test on php ${{ matrix.php}} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 5
+    timeout-minutes: 10
     strategy:
       fail-fast: false # dont fast fail
       matrix:
@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup PHP
-        timeout-minutes: 3
+        timeout-minutes: 5
         uses: shivammathur/setup-php@v1
         with:
           php-version: ${{ matrix.php}}
