@@ -1,4 +1,4 @@
-name: Unit-Tests
+name: Unit-tests
 
 on: [push]
 
@@ -28,7 +28,7 @@ jobs:
 
       - name: Install extensions
         run: |
-          pecl update && pecl install -f msgpack && pecl install -f igbinary && php -m
+          pecl update-channels && pecl install -f msgpack && pecl install -f igbinary && php -m
 
       - name: Install dependencies
         run: composer install --no-progress --no-suggest
