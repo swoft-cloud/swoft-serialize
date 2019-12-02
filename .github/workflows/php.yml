@@ -7,6 +7,7 @@ jobs:
   test:
     name: Test on php ${{ matrix.php}} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
     strategy:
       matrix:
         php: [7.1, 7.2, 7.3, 7.4]
@@ -15,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup PHP
-        timeout-minutes: 5
+        timeout-minutes: 3
         uses: shivammathur/setup-php@v1
         with:
           php-version: ${{ matrix.php}}
