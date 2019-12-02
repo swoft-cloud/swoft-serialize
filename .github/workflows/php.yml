@@ -1,17 +1,21 @@
-name: PHP Composer
+name: Unit Tests
 
 on: [push]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
+  test:
+    name: Test on php ${{ matrix.php_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        php_version: [7.1, 7.2, 7.3, 7.4]
+        os: [ubuntu-latest, macOS-latest]
 
     steps:
     - uses: actions/checkout@v1
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
+    - name: Install extensions
+      run: pecl install -f msgpack && pecl install -f igbinary && php -m
 
     - name: Install dependencies
       run: composer install --no-progress --no-suggest
