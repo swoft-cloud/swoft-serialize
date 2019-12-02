@@ -3,6 +3,7 @@
 namespace Swoft\Serialize\Concern;
 
 use Swoft\Serialize\Contract\SerializerInterface;
+use Swoft\Serialize\PhpSerializer;
 
 /**
  * Class SerializeAwareTrait
