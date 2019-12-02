@@ -15,6 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup PHP
+        timeout-minutes: 2
         uses: shivammathur/setup-php@v1
         with:
           php-version: ${{ matrix.php_version }}
